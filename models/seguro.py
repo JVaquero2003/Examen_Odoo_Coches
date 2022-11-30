@@ -7,6 +7,6 @@ class seguro(models.Model):
     name = fields.Char(string='Nombre')
     descripcion = fields.Char(string='Descripción')
     fecha_vecenimiento = fields.Date(string='Fecha de vencimiento')
-    #un seguro pertenece a un vehiculo
-    vehiculo_id = fields.One2one('concesionario.vehiculo', 'seguro_id', string='Vehículo')
+    #vehiculo-> un seguro pertenece a un vehiculo
+    vehiculo_id = fields.Many2one('concesionario.vehiculo', string='Vehículo')
 
