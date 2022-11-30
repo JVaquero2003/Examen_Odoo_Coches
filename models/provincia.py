@@ -5,4 +5,4 @@ class provincia(models.Model):
     _descripcion = 'Permite definir los datos de una provincia'
 
     name = fields.Char(string='Nombre')
-    descripcion = fields.Char(string='Descripción')
+    descripcion = fields.Char(string='descripción')

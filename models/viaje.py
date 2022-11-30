@@ -7,15 +7,15 @@ class viaje(models.Model):
     name = fields.Char(string='Nombre')
     descripcion = fields.Char(string='Descripción')
     fecha_realizacion = fields.Date(string='Fecha de realización')
-    duracion = fields.DateTime(string='Duración')
+    duracion = fields.Integer(string='Duración')
     #un viaje puede ser realizado por un vehiculo
-    vehiculo_id = fields.Many2one('concesionario.vehiculo', 'viaje_id', string='Vehículo')
+    vehiculo_id = fields.Many2one('concesionario.vehiculo', string='vehículo')
     #un viaje puede ser realizado por un conductor
-    conductor_id = fields.Many2one('concesionario.conductor', 'viaje_id', string='Conductor')
+    conductor_id = fields.Many2one('concesionario.conductor', string='conductor')
     #provincia origen -> 1:1 Relación con el modelo provincia
-    provincia_origen_id = fields.Many2one('concesionario.provincia', 'viaje_id', string='Provincia de origen')
+    provincia_origen_id = fields.Many2one('concesionario.provincia', string='provincia origen')
     #provincia destino -> 1:1 Relación con el modelo provincia
-    provincia_destino_id = fields.Many2one('concesionario.provincia', 'viaje_id', string='Provincia de destino')
+    provincia_destino_id = fields.Many2one('concesionario.provincia', string='provincia destino')
 
     #un campo onchange que mediante un booleano indique si la duración ha sido mayor a 2 horas
     @api.onchange('duracion')

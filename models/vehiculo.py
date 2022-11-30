@@ -11,8 +11,8 @@ class vehiculo(models.Model):
     cantidad_asientos = fields.Integer(string='Cantidad de asientos')
 
     #conductores->Un vehículo ha podido ser conducido sólo un conductor
-    conductor_id = fields.Many2one('concesionario.conductor', 'vehiculo_id', string='Conductor')
+    conductor_id = fields.Many2one('concesionario.conductor', string='conductor')
     #seguro-> un vehiculo puede tener un seguro
-    seguro_id = fields.Many2one('concesionario.seguro', string='Seguro')
+    seguro_id = fields.Many2one('concesionario.seguro', string='seguro')
     #viajes->Un vehículo ha podido ser realizar n viajes
-    viaje_ids = fields.One2many('concesionario.viaje', 'vehiculo_id', string='Viajes')         
+    viaje_ids = fields.One2many('concesionario.viaje', 'vehiculo_id', string='viajes')         
