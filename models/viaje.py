@@ -7,7 +7,7 @@ class viaje(models.Model):
     name = fields.Char(string='Nombre')
     descripcion = fields.Char(string='Descripción')
     fecha_realizacion = fields.Date(string='Fecha de realización')
-    duracion = fields.Integer(string='Duración')
+    duracion = fields.Float(string='Duración')
     #un viaje puede ser realizado por un vehiculo
     vehiculo_id = fields.Many2one('concesionario.vehiculo', string='vehículo')
     #un viaje puede ser realizado por un conductor
