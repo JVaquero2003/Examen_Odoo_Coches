@@ -1,55 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- View vehiculo -->
-        <record id="view_vehiculo" model="ir.ui.view">
-            <field name="name">concesionario.vehiculo</field>
+        <record id="vehiculo_tree_view" model="ir.ui.view">
+            <field name="name">Vehículo</field>
             <field name="model">concesionario.vehiculo</field>
             <field name="arch" type="xml">
-                <form string="Vehiculo">
+                <tree string="Vehículos">
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                    <field name="marca"/>
+                    <field name="color"/>
+                    <field name="cantidad_asientos"/>
+                    <field name="conductor_id"/>
+                    <field name="seguro_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="vehiculo_form_view" model="ir.ui.view">
+            <field name="name">Vehículo</field>
+            <field name="model">concesionario.vehiculo</field>
+            <field name="arch" type="xml">
+                <form string="Vehículos">
+                    <group>
+                        <field name="name"/>
+                        <field name="descripcion"/> 
+                        <field name="marca"/>
+                        <field name="color"/>
+                        <field name="cantidad_asientos"/>
+                        <field name="conductor_id"/>
+                        <field name="seguro_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="vehiculo_search_view" model="ir.ui.view">
+            <field name="name">Vehículo</field>
+            <field name="model">concesionario.vehiculo</field>
+            <field name="arch" type="xml">
+                <search string="Vehículos">
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                    <field name="marca"/>
+                    <field name="color"/>
+                    <field name="cantidad_asientos"/>
+                    <field name="conductor_id"/>
+                    <field name="seguro_id"/>
+                </search>
+            </field>
+        </record>
+        <record id="vehiculo_action" model="ir.actions.act_window">
+            <field name="name">Vehículos</field>
+            <field name="res_model">concesionario.vehiculo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="vehiculo_tree_view"/>
+            <field name="search_view_id" ref="vehiculo_search_view"/>
+        </record>
+<!--END VEHICULO-->
+        <record id="seguro_tree_view" model="ir.ui.view">
+            <field name="name">Seguro</field>
+            <field name="model">concesionario.seguro</field>
+            <field name="arch" type="xml">
+                <tree string="Seguros">
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                    <field name="fecha_vecenimiento"/>
+                    <field name="vehiculo_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="seguro_form_view" model="ir.ui.view">
+            <field name="name">Seguro</field>
+            <field name="model">concesionario.seguro</field>
+            <field name="arch" type="xml">
+                <form string="Seguros">
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="marca"/>
-                            <field name="modelo"/>
-                            <field name="color"/>
-                            <field name="matricula"/>
-                            <field name="precio"/>
+                            <field name="descripcion"/>
+                            <field name="fecha_vecenimiento"/>
+                            <field name="vehiculo_id"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
-        <!-- View vehiculo tree -->
-        <record id="view_vehiculo_tree" model="ir.ui.view">
-            <field name="name">concesionario.vehiculo_tree</field>
-            <field name="model">concesionario.vehiculo</field>
+        <record id="seguro_search_view" model="ir.ui.view">
+            <field name="name">Seguro</field>
+            <field name="model">concesionario.seguro</field>
             <field name="arch" type="xml">
-                <tree string="Vehiculo">
+                <search string="Seguros">
                     <field name="name"/>
-                    <field name="marca"/>
-                    <field name="modelo"/>
-                    <field name="color"/>
-                    <field name="matricula"/>
-                    <field name="precio"/>
-                </tree>
-            </field>
-        </record>
-        <!-- View vehiculo search -->
-        <record id="view_vehiculo_search" model="ir.ui.view">
-            <field name="name">concesionario.vehiculo_search</field>
-            <field name="model">concesionario.vehiculo</field>
-            <field name="arch" type="xml">
-                <search string="Vehiculo">
-                    <field name="name"/>
-                    <field name="marca"/>
-                    <field name="modelo"/>
-                    <field name="color"/>
-                    <field name="matricula"/>
-                    <field name="precio"/>
+                    <field name="descripcion"/>
+                    <field name="fecha_vecenimiento"/>
+                    <field name="vehiculo_id"/>
                 </search>
             </field>
         </record>
-    
+        <record id="seguro_action" model="ir.actions.act_window">
+            <field name="name">Seguros</field>
+            <field name="res_model">concesionario.seguro</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="seguro_tree_view"/>
+            <field name="search_view_id" ref="seguro_search_view"/>
+        </record>
+
+<!--END SEGURO-->
+
+        <record id="conductor_tree_view" model="ir.ui.view">
+                <field name="name">Conductor</field>
+                <field name="model">concesionario.conductor</field>
+                <field name="arch" type="xml">
+                    <tree string="Conductores">
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                        <field name="apellidos"/>
+                        <field name="dni"/>
+                        <field name="vehiculo_ids"/>
+                    </tree>
+                </field>
+            </record>
+            <record id="conductor_form_view" model="ir.ui.view">
+                <field name="name">Conductor</field>
+                <field name="model">concesionario.conductor</field>
+                <field name="arch" type="xml">
+                    <form string="Conductores">
+                        <sheet>
+                            <group>
+                                <field name="name"/>
+                                <field name="descripcion"/>
+                                <field name="apellidos"/>
+                                <field name="dni"/>
+                                <field name="vehiculo_ids"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            <record id="conductor_search_view" model="ir.ui.view">
+                <field name="name">Conductor</field>
+                <field name="model">concesionario.conductor</field>
+                <field name="arch" type="xml">
+                    <search string="Conductores">
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                        <field name="apellidos"/>
+                        <field name="dni"/>
+                        <field name="vehiculo_ids"/>
+                    </search>
+                </field>
+            </record>
+
+            <record id="conductor_action" model="ir.actions.act_window">
+                <field name="name">Conductores</field>
+                <field name="res_model">concesionario.conductor</field>
+                <field name="view_mode">tree,form</field>
+                <field name="view_id" ref="conductor_tree_view"/>
+                <field name="search_view_id" ref="conductor_search_view"/>
+            </record>
+
+<!--END CONDUCTOR-->
+
+        <record id="view_concesionario_provincia_tree" model="ir.ui.view">
+                <field name="name">concesionario.provincia.tree</field>
+                <field name="model">concesionario.provincia</field>
+                <field name="arch" type="xml">
+                    <tree string="Provincias">
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                    </tree>
+                </field>
+            </record>
+            <record id="view_concesionario_provincia_form" model="ir.ui.view">
+                <field name="name">concesionario.provincia.form</field>
+                <field name="model">concesionario.provincia</field>
+                <field name="arch" type="xml">
+                    <form string="Provincias">
+                        <group>
+                            <field name="name"/>
+                            <field name="descripcion"/>
+                        </group>
+                    </form>
+                </field>
+            </record>
+            <record id="view_concesionario_provincia_search" model="ir.ui.view">
+                <field name="name">concesionario.provincia.search</field>
+                <field name="model">concesionario.provincia</field>
+                <field name="arch" type="xml">
+                    <search string="Provincias">
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                    </search>
+                </field>
+            </record>
+            <record id="action_concesionario_provincia" model="ir.actions.act_window">
+                <field name="name">Provincias</field>
+                <field name="res_model">concesionario.provincia</field>
+                <field name="view_mode">tree,form</field>
+                <field name="view_id" ref="view_concesionario_provincia_tree"/>
+                <field name="search_view_id" ref="view_concesionario_provincia_search"/>
+            </record>
+
+<!--END PROVINCIA-->
+            <record id="view_viaje_tree" model="ir.ui.view">
+                <field name="name">view_viaje_tree</field>
+                <field name="model">concesionario.viaje</field>
+                <field name="arch" type="xml">
+                    <tree string="Viajes">
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                        <field name="fecha_realizacion"/>
+                        <field name="duracion"/>
+                        <field name="vehiculo_id"/>
+                        <field name="conductor_id"/>
+                        <field name="provincia_origen_id"/>
+                        <field name="provincia_destino_id"/>
+                    </tree>
+                </field>
+            </record>
+            <record id="view_viaje_form" model="ir.ui.view">
+                <field name="name">view_viaje_form</field>
+                <field name="model">concesionario.viaje</field>
+                <field name="arch" type="xml">
+                    <form string="Viajes">
+                        <sheet>
+                            <group>
+                                <field name="name"/>
+                                <field name="descripcion"/>
+                                <field name="fecha_realizacion"/>
+                                <field name="duracion"/>
+                                <field name="vehiculo_id"/>
+                                <field name="conductor_id"/>
+                                <field name="provincia_origen_id"/>
+                                <field name="provincia_destino_id"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            <record id="view_viaje_search" model="ir.ui.view">
+                <field name="name">view_viaje_search</field>
+                <field name="model">concesionario.viaje</field>
+                <field name="arch" type="xml">
+                    <search string="Viajes">
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                        <field name="fecha_realizacion"/>
+                        <field name="duracion"/>
+                        <field name="vehiculo_id"/>
+                        <field name="conductor_id"/>
+                        <field name="provincia_origen_id"/>
+                        <field name="provincia_destino_id"/>
+                    </search>
+                </field>
+            </record>
+            <record id="action_viaje" model="ir.actions.act_window">
+                <field name="name">Viajes</field>
+                <field name="res_model">concesionario.viaje</field>
+                <field name="view_mode">tree,form</field>
+                <field name="view_id" ref="view_viaje_tree"/>
+                <field name="search_view_id" ref="view_viaje_search"/>
+            </record>
+
+<!--END VIAJE-->
+
+
+        <menuitem id="menu_concesionario" name="Concesionario" sequence="1"/>
+        <menuitem id="menu_vehiculo" name="Vehículos" parent="menu_concesionario" action="vehiculo_action" sequence="1"/>
+        <menuitem id="menu_seguro" name="Seguros" parent="menu_concesionario" action="seguro_action" sequence="2"/>
+        <menuitem id="menu_conductor" name="Conductores" parent="menu_concesionario" action="conductor_action" sequence="3"/>
+        <menuitem id="menu_provincia" name="Provincias" parent="menu_concesionario" action="action_concesionario_provincia" sequence="4"/>
+        <menuitem id="menu_viaje" name="Viajes" parent="menu_concesionario" action="action_viaje" sequence="5"/>
     </data>
 </odoo>

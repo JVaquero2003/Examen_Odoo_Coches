@@ -10,4 +10,4 @@ class conductor(models.Model):
     apellidos = fields.Char(string='Apellidos')
     dni = fields.Char(string='DNI')
     #Un conductor ha podido conducir n vehiculos
-    vehiculo_ids = fields.One2many('concesionario.vehiculo', 'conductor_id', string='Vehículos')
+    vehiculo_ids = fields.One2many('concesionario.vehiculo', 'conductor_id', string='Vehículos')         

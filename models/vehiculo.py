@@ -6,7 +6,6 @@ class vehiculo(models.Model):
 
     name = fields.Char(string='Matrícula')
     descripcion = fields.Char(string='Descripción')
-
     marca = fields.Char(string='Marca')
     color = fields.Selection([('blanco', 'Blanco'), ('gris', 'Gris'), ('negro', 'Negro')])
     cantidad_asientos = fields.Integer(string='Cantidad de asientos')
@@ -16,4 +15,4 @@ class vehiculo(models.Model):
     #seguro-> un vehiculo puede tener un seguro
     seguro_id = fields.Many2one('concesionario.seguro', string='Seguro')
     #viajes->Un vehículo ha podido ser realizar n viajes
-    viaje_ids = fields.One2many('concesionario.viaje', 'vehiculo_id', string='Viajes')
+    viaje_ids = fields.One2many('concesionario.viaje', 'vehiculo_id', string='Viajes')         

@@ -9,4 +9,3 @@ class seguro(models.Model):
     fecha_vecenimiento = fields.Date(string='Fecha de vencimiento')
     #vehiculo-> un seguro pertenece a un vehiculo
     vehiculo_id = fields.Many2one('concesionario.vehiculo', string='Vehículo')
-
